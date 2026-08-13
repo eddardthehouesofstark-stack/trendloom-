@@ -1,0 +1,91 @@
+================================================================================
+🚨 IMPORTANT: Use the FIXED SQL File!
+================================================================================
+
+❌ DON'T USE: india_fashion_data.sql (has wrong columns)
+✅ USE THIS: india_fashion_data_FIXED.sql (matches your database schema)
+
+================================================================================
+📋 IMPORT STEPS (2 Minutes)
+================================================================================
+
+1. Open Supabase:
+   → https://app.supabase.com
+   → Open your "trendloom" project
+   → Click "SQL Editor" (left sidebar)
+   → Click "New Query"
+
+2. Copy the CORRECT SQL:
+   → Open file: india_fashion_data_FIXED.sql
+   → Select ALL (Ctrl+A)
+   → Copy (Ctrl+C)
+
+3. Paste and Run:
+   → Paste into Supabase SQL Editor (Ctrl+V)
+   → Click "Run" button (or Ctrl+Enter)
+   → ✅ Should see: "Success! 35 rows affected"
+
+4. Verify:
+   → Click "Table Editor"
+   → Click "trends" table → Should see 25 India trends
+   → Click "regional_trends" table → Should see 10 Tamil Nadu trends
+
+================================================================================
+✅ WHAT WAS FIXED
+================================================================================
+
+The original SQL had these columns:
+❌ search_volume (doesn't exist in your database)
+❌ growth_rate (doesn't exist)
+❌ season (doesn't exist)
+❌ target_audience (doesn't exist)
+❌ confidence_score (doesn't exist)
+
+The FIXED SQL uses only columns that exist:
+✅ name
+✅ category
+✅ status
+✅ momentum_score
+✅ description (includes search volume info as text)
+✅ image_url
+✅ source
+
+================================================================================
+📊 WHAT YOU'RE IMPORTING
+================================================================================
+
+✅ 25 India National Trends
+   - In "trends" table
+   - Categories: Ethnic Wear, Western Wear, Fabrics, Fusion, Accessories
+   - Momentum scores: 75-155
+   - Source: Google Trends India
+
+✅ 10 Tamil Nadu Regional Trends
+   - In "regional_trends" table
+   - Country code: IN
+   - State code: TN
+   - Momentum scores: 105-165
+   - Kanchipuram sarees, Temple jewellery, etc.
+
+================================================================================
+🎉 AFTER IMPORT
+================================================================================
+
+Your TrendLoom platform will have:
+✅ Real India fashion data in database
+✅ API endpoints return India trends
+✅ Dashboard shows Indian fashion
+✅ Regional page: India → Tamil Nadu works
+✅ 35 authentic fashion trends
+
+================================================================================
+🚀 START NOW!
+================================================================================
+
+File to use: india_fashion_data_FIXED.sql
+Time: 2 minutes
+Result: 35 real India fashion trends live!
+
+Copy → Paste → Run → Done! 🇮🇳
+
+================================================================================
