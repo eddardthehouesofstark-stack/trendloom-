@@ -7,7 +7,7 @@
 const API_CONFIG = {
     baseURL: window.location.hostname === 'localhost' 
         ? 'http://localhost:8000' 
-        : 'https://your-backend-api.render.com', // Update with your deployed API URL
+        : 'https://trendloom-3aux.onrender.com', // Deployed Render API
     timeout: 10000
 };
 
