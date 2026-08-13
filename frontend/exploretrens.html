@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TrendLoom - Explore Trends</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8f9fb",
+                    "secondary-fixed-dim": "#6bd8cb",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#b9c7e4",
+                    "primary": "#000000",
+                    "on-primary-container": "#76849f",
+                    "secondary-container": "#86f2e4",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#44474d",
+                    "on-tertiary-fixed-variant": "#474744",
+                    "surface-dim": "#d9dadc",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005049",
+                    "surface-container": "#edeef0",
+                    "inverse-on-surface": "#f0f1f3",
+                    "tertiary-fixed-dim": "#c8c6c2",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#000000",
+                    "primary-fixed-dim": "#b9c7e4",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#e4e2dd",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fb",
+                    "outline": "#75777e",
+                    "on-surface": "#191c1e",
+                    "on-secondary-fixed": "#00201d",
+                    "surface-container-low": "#f3f4f6",
+                    "surface-variant": "#e1e2e4",
+                    "secondary": "#006a61",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-secondary-container": "#006f66",
+                    "on-tertiary-fixed": "#1b1c19",
+                    "on-primary-fixed-variant": "#39475f",
+                    "surface-container-highest": "#e1e2e4",
+                    "on-primary-fixed": "#0d1c32",
+                    "surface": "#f8f9fb",
+                    "surface-container-high": "#e7e8ea",
+                    "tertiary-container": "#1b1c19",
+                    "primary-container": "#0d1c32",
+                    "on-background": "#191c1e",
+                    "on-tertiary-container": "#848480",
+                    "primary-fixed": "#d6e3ff",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#515f78",
+                    "secondary-fixed": "#89f5e7",
+                    "outline-variant": "#c5c6cd"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sidebar-width": "280px",
+                    "margin-mobile": "16px",
+                    "stack-md": "16px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "40px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "label-sm": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Playfair Display"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Playfair Display"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-lg-mobile": [
+                            "Playfair Display"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Playfair Display"
+                    ]
+            },
+            "fontSize": {
+                    "label-sm": [
+                            "12px",
+                            {
+                                    "lineHeight": "16px",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "32px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "24px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "display-lg": [
+                            "48px",
+                            {
+                                    "lineHeight": "56px",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "28px",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "28px",
+                            {
+                                    "lineHeight": "36px",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "20px",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "40px",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .trend-card-hover .overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .trend-card-hover:hover .overlay {
+            opacity: 1;
+        }
+        .trend-card-hover img {
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .trend-card-hover:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased overflow-x-hidden">
+<!-- SideNavBar -->
+<aside class="bg-primary-container dark:bg-primary-container fixed left-0 top-0 h-full w-[280px] border-r border-outline-variant/20 dark:border-outline/10 shadow-sm flex flex-col py-margin-desktop z-50 hidden md:flex">
+<div class="px-6 mb-8 flex flex-col gap-2">
+<span class="font-display-lg text-display-lg text-on-primary-fixed italic tracking-tight font-extrabold text-[32px] leading-tight">TrendLoom</span>
+<span class="font-label-sm text-label-sm text-on-primary-container mt-2">Executive Dashboard</span>
+</div>
+<div class="flex-1 overflow-y-auto pb-6">
+<!-- Workspace -->
+<div class="px-6 py-2">
+<span class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider text-[10px]">Workspace</span>
+</div>
+<nav class="flex flex-col gap-1 mb-4">
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="dashboard.html">
+<span class="material-symbols-outlined text-[18px]">dashboard</span>
+            Dashboard
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-secondary-fixed border-l-4 border-secondary-fixed bg-secondary-container/10 hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group active" href="exploretrens.html">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">travel_explore</span>
+            Explore Trends
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="seasonal.html">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+            Seasonal Intelligence
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="regional.html">
+<span class="material-symbols-outlined text-[18px]">public</span>
+            Regional Demand
+        </a>
+</nav>
+<!-- Decision Support -->
+<div class="px-6 py-2 mt-4">
+<span class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider text-[10px]">Decision Support</span>
+</div>
+<nav class="flex flex-col gap-1 mb-4">
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="comp.html">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+            Competitor Trends
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="suggestion.html">
+<span class="material-symbols-outlined text-[18px]">lightbulb</span>
+            Recommendations
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="attributes.html">
+<span class="material-symbols-outlined text-[18px]">category</span>
+            Attribute Analyzer
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-[18px]">bookmark</span>
+            Saved Trends
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-[18px]">download</span>
+            Reports &amp; Exports
+        </a>
+</nav>
+<!-- Workspace Management -->
+<div class="px-6 py-2 mt-4">
+<span class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-wider text-[10px]">Workspace Management</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-[18px]">forum</span>
+            Feedback &amp; Outcomes
+        </a>
+<a class="flex items-center gap-4 py-2 px-6 text-on-primary-fixed-variant hover:bg-on-primary-fixed/5 transition-colors font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+            Settings
+        </a>
+</nav>
+</div>
+</aside>
+<div class="noise-overlay"></div>
+<!-- TopAppBar (Mobile) -->
+<header class="flex md:hidden justify-between items-center w-full px-margin-mobile py-stack-sm bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm docked full-width top-0 z-40">
+<div class="font-headline-md text-headline-md font-semibold text-primary">TrendLoom</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer">search</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer">account_circle</span>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-sidebar-width w-full pb-24 md:pb-0">
+<!-- Hero Header -->
+<div class="relative pt-16 pb-12 px-margin-mobile md:px-margin-desktop bg-surface overflow-hidden">
+<div class="relative z-10 max-w-5xl">
+<h1 class="font-display-lg text-display-lg text-primary mb-4">Explore Trends</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">Browse the signals shaping the next season with our high-fidelity intelligence data.</p>
+</div>
+<!-- Decorative Abstract Shape -->
+<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-primary-container/5 to-secondary-container/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+</div>
+<!-- Filters & Controls -->
+<div class="px-margin-mobile md:px-margin-desktop pb-8 sticky top-[64px] md:top-0 z-30 bg-surface/90 backdrop-blur-lg border-b border-outline-variant/10 pt-4">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 max-w-7xl mx-auto">
+<!-- Filters -->
+<div class="flex flex-wrap gap-3">
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors cursor-pointer">
+<option>Category: All</option>
+<option>Apparel</option>
+<option>Accessories</option>
+<option>Footwear</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-sm">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors cursor-pointer">
+<option>Region: Global</option>
+<option>EU</option>
+<option>APAC</option>
+<option>NA</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-sm">expand_more</span>
+</div>
+<div class="relative">
+<select class="appearance-none bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-label-md text-label-md py-2 pl-4 pr-10 rounded-full focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors cursor-pointer">
+<option>Momentum: Any</option>
+<option>Rising</option>
+<option>Peak</option>
+<option>Declining</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant text-sm">expand_more</span>
+</div>
+</div>
+<!-- Search & View Toggle -->
+<div class="flex items-center gap-4 w-full md:w-auto">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-body-md text-body-md py-2 pl-10 pr-4 rounded-full focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary transition-colors placeholder:font-body-md placeholder:text-on-surface-variant/50" placeholder="Search signals..." type="text"/>
+</div>
+<div class="hidden md:flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/20">
+<button class="p-1 rounded bg-surface-container-lowest shadow-sm text-primary"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-1 rounded text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined">view_list</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Trend Grid -->
+<div class="px-margin-mobile md:px-margin-desktop py-stack-lg max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="group bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-outline-variant/10 trend-card-hover relative cursor-pointer flex flex-col h-full">
+<div class="relative h-72 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="High-fashion editorial photo of a model wearing architectural pleated garments in soft cream tones, minimalist studio lighting, high resolution, precise folds." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqRmH-xViZa4wvZ30-qL4Zh1JjGw81d-OUiXNoBzxHwf0Q1GuobRoW8BowabH5FGt-4AS5OZXZkiofozdVIDmEEiQRvMscq8-U-OGWZMvAF_zcFcvxjQC6o7tMKz93r7HzOraIr0_tJwJn9Aw3G_ny1ZUIXnzB6WKZEtYELo9HOZj1tcw8UJ61u4XmJK7b7-P7Q70YwsWLKJ5xIzzYsM_vMMct85RVi-ZAP_OKNyJne9Op4ih7_jUeyw"/>
+<!-- Badges -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Produce</span>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur text-primary font-headline-md text-headline-md w-12 h-12 flex items-center justify-center rounded-full shadow-sm">
+                                92
+                            </div>
+<!-- Hover Overlay -->
+<div class="overlay absolute inset-0 bg-primary-container/80 flex items-center justify-center backdrop-blur-sm">
+<span class="text-on-primary font-label-md text-label-md border border-on-primary/30 px-6 py-2 rounded-full uppercase tracking-wider hover:bg-on-primary hover:text-primary transition-colors">View Intelligence</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Architectural Pleats</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2 flex-1">Structured, origami-like folding techniques dominating premium womenswear collections.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>Rising +18%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Apparel</span>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-outline-variant/10 trend-card-hover relative cursor-pointer flex flex-col h-full">
+<div class="relative h-72 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Editorial portrait showcasing a pale purple, digital lavender silk blouse, futuristic metallic background, soft ambient lighting, high fashion photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg7HULEcixSTfCMq_XY1L9n0q4JCLrDEhhmgPQLIwoIskZL84uiyZuYWNMOXjkMfQZVKuV9_gUEmQrjR267Yeg1_3QEeavtLI5x7AWwSxBNuuo-2qVh7LyXleAEKsTI5p1h6hufCC1phDFSzAe0g157BosXbq-zR54ogXpPHZaPp7CYr4Wc9wzhaKMgJSCDYbzy-yx13nL5MafENtzNPF1enxDo7t9FKjkHl6RFwuvEGTjBQEIMZaQKg"/>
+<!-- Badges -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface-tint text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Watch</span>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur text-primary font-headline-md text-headline-md w-12 h-12 flex items-center justify-center rounded-full shadow-sm">
+                                85
+                            </div>
+<!-- Hover Overlay -->
+<div class="overlay absolute inset-0 bg-primary-container/80 flex items-center justify-center backdrop-blur-sm">
+<span class="text-on-primary font-label-md text-label-md border border-on-primary/30 px-6 py-2 rounded-full uppercase tracking-wider hover:bg-on-primary hover:text-primary transition-colors">View Intelligence</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Digital Lavender</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2 flex-1">Soft purples bridging the gap between digital wellness and physical garments.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>Rising +12%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Color</span>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="group bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-outline-variant/10 trend-card-hover relative cursor-pointer flex flex-col h-full">
+<div class="relative h-72 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Close up of a sustainable utility jacket in deep teal canvas, robust silver hardware, practical pockets, outdoorsy yet elevated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3SIvRdDewjBeIP74oX0Dr5-2ZOb89_7NZpLdmLYID5_mRqtBMHjhmH7MvdSci6nEDt9Y1ClndBokbdmjsBlHWtCjTPjFTwVWVHuIF9iSv4hdPUzV9-gZXHx99kmZ8XThpZC0j0vajZm5txSRX3d90DaETUHZbJx1cydjmBJPq3boPFHXe-Iyx5nAhXMWPidPtmttTbNny-BoD67ZbbcxHBO1qC62YavUtcc-x0BwhLhgr3g-ZqPK8KA"/>
+<!-- Badges -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Produce</span>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur text-primary font-headline-md text-headline-md w-12 h-12 flex items-center justify-center rounded-full shadow-sm">
+                                95
+                            </div>
+<!-- Hover Overlay -->
+<div class="overlay absolute inset-0 bg-primary-container/80 flex items-center justify-center backdrop-blur-sm">
+<span class="text-on-primary font-label-md text-label-md border border-on-primary/30 px-6 py-2 rounded-full uppercase tracking-wider hover:bg-on-primary hover:text-primary transition-colors">View Intelligence</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Sustainable Utility</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2 flex-1">Functional multi-pocket designs utilizing recycled performance fabrics and heavy canvas.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-surface-tint font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_flat</span>
+<span>Peak +2%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Apparel</span>
+</div>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="group bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-outline-variant/10 trend-card-hover relative cursor-pointer flex flex-col h-full">
+<div class="relative h-72 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Model holding a sleek, minimalist crescent-shaped leather bag in deep espresso brown, neutral background, sharp studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaOQglYSSOeKGKfUBmgi1WlzEGur3HGKkniS2Y3jmHnRp3jTIJVzgAcser-iO2VKAniJtiez-pRXp4SxUsTcAlIu2C3YNZ94a93DS7SkfJ2fBY5NeyMz6guQ1a1NrsMEUmKd8452DmryOrPlF9Bs_o09Wl93Cd83aVq7YSjshL57OE_1rKlT9XQoF3NIdhUJxDgWYI-HqiuOqKh_PpYoZNNb_w3-0bDmLGaj7iKLisYKm73DdDAN3ndg"/>
+<!-- Badges -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-surface-tint text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Watch</span>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur text-primary font-headline-md text-headline-md w-12 h-12 flex items-center justify-center rounded-full shadow-sm">
+                                78
+                            </div>
+<!-- Hover Overlay -->
+<div class="overlay absolute inset-0 bg-primary-container/80 flex items-center justify-center backdrop-blur-sm">
+<span class="text-on-primary font-label-md text-label-md border border-on-primary/30 px-6 py-2 rounded-full uppercase tracking-wider hover:bg-on-primary hover:text-primary transition-colors">View Intelligence</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Crescent Silhouettes</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2 flex-1">Curved, structured hobo styles re-emerging in premium leather accessories.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>Rising +24%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Accessories</span>
+</div>
+</div>
+</article>
+<!-- Card 5 -->
+<article class="group bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-outline-variant/10 trend-card-hover relative cursor-pointer flex flex-col h-full">
+<div class="relative h-72 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Chunky, brutalist-inspired silver jewelry piece against a dark slate background, dramatic shadows highlighting the heavy metal texture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPd2n7-1MYstn0h9Mzjxvxbq9kqaD1r9A8_C65ibJRJZMd1Uezliwrq0KZd4RrY483tlL0neuOA8KMqGFq478dSskKI6OyX17MVWiH-zkd1358Dbuo1g6cLCBjxYI2Wpj-lGWflBAWuDjHqWeo0ELC-bfydu85M0yzd3jhbipacaAoSM_XMUwFtsap88QMqOjutqACF7gefp_73Lxb952cQzZFYJvRaL4erGWHEnkVrGOBGJOyI1vSqA"/>
+<!-- Badges -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-error text-on-error font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Avoid</span>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur text-primary font-headline-md text-headline-md w-12 h-12 flex items-center justify-center rounded-full shadow-sm">
+                                42
+                            </div>
+<!-- Hover Overlay -->
+<div class="overlay absolute inset-0 bg-primary-container/80 flex items-center justify-center backdrop-blur-sm">
+<span class="text-on-primary font-label-md text-label-md border border-on-primary/30 px-6 py-2 rounded-full uppercase tracking-wider hover:bg-on-primary hover:text-primary transition-colors">View Intelligence</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Micro Metalwork</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2 flex-1">Delicate, overly intricate metal accessories showing fatigue in major global markets.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-error font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+<span>Declining -15%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Jewelry</span>
+</div>
+</div>
+</article>
+<!-- Card 6 -->
+<article class="group bg-surface-container-lowest rounded-[16px] overflow-hidden shadow-[0_4px_20px_rgba(10,25,47,0.04)] border border-outline-variant/10 trend-card-hover relative cursor-pointer flex flex-col h-full">
+<div class="relative h-72 overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Sheer, ethereal organza fabric layered over a tailored suit silhouette, conveying transparency and fluidity in modern tailoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9xMyBe25YOnF35C0bmqaQe5nZwpa-h8kHCPf0H5Dbw0mUHu_sBK8AwhcQZo_Kp72qcqQ_zZ-yizKYWfAZFygyMakt8tw2e-fnygTGf8W-7BEAPfudaELhaLiEXKfXWB0yqMYnpQC0JQel2byL9uh6dZoNhnL0mjSMApbfxI3-2-MiSf1LIGwGbJoXv4hlfYlznes3RM36YHAmG1bKPGbZobIHhIpsPPkuIK-6dJoXyyu7u6AY2IrqyA"/>
+<!-- Badges -->
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="bg-secondary text-on-primary font-label-sm text-label-sm px-3 py-1 rounded-full uppercase tracking-widest shadow-sm">Produce</span>
+</div>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur text-primary font-headline-md text-headline-md w-12 h-12 flex items-center justify-center rounded-full shadow-sm">
+                                89
+                            </div>
+<!-- Hover Overlay -->
+<div class="overlay absolute inset-0 bg-primary-container/80 flex items-center justify-center backdrop-blur-sm">
+<span class="text-on-primary font-label-md text-label-md border border-on-primary/30 px-6 py-2 rounded-full uppercase tracking-wider hover:bg-on-primary hover:text-primary transition-colors">View Intelligence</span>
+</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Fluid Tailoring</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-2 flex-1">Deconstructed suiting incorporating sheer layers and relaxed, draped fits.</p>
+<div class="pt-4 border-t border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span>Rising +9%</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Apparel</span>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-stack-lg flex justify-center">
+<button class="px-8 py-3 border-2 border-outline-variant/30 text-primary font-label-md text-label-md rounded-full hover:border-secondary hover:text-secondary transition-colors uppercase tracking-wider">
+                        Load More Insights
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile) -->
+<nav class="flex md:hidden justify-around items-center h-16 px-4 pb-safe bg-surface-container-highest dark:bg-inverse-surface shadow-[0_-4px_20px_rgba(10,25,47,0.04)] fixed bottom-0 left-0 w-full z-50 rounded-t-xl text-secondary dark:text-secondary-fixed">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 w-full h-full rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary bg-secondary-container/30 rounded-full py-1 px-4 scale-95 transition-transform w-full h-full" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-label-sm text-label-sm">Trends</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 w-full h-full rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 w-full h-full rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-sm text-label-sm">Alerts</span>
+</a>
+</nav>
+</body></html>
