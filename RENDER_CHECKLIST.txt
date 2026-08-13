@@ -1,0 +1,170 @@
+================================================================================
+🔧 RENDER BACKEND FIX - QUICK CHECKLIST
+================================================================================
+
+Go to: https://dashboard.render.com
+
+Open your service: trendloom-3aux
+
+================================================================================
+✅ STEP 1: CHECK STATUS
+================================================================================
+
+Current Status: [ ] Live  [ ] Suspended  [ ] Deploy Failed  [ ] Deploying
+
+If "Suspended": Click "Resume Service"
+If "Deploy Failed": Continue to Step 2
+
+================================================================================
+✅ STEP 2: VERIFY SETTINGS (Click "Settings" tab)
+================================================================================
+
+Root Directory:
+  Current: _______________
+  Should be: "backend" OR (empty)
+
+Build Command:
+  Current: _______________
+  Should be: "pip install -r requirements.txt"
+
+Start Command:
+  Current: _______________
+  Should be: "uvicorn main:app --host 0.0.0.0 --port $PORT"
+  OR: "python main.py"
+
+Python Version (under Advanced):
+  Current: _______________
+  Should be: "3.11" or "3.10" or "3.9"
+  ⚠️ NOT 3.13 (may have issues)
+
+================================================================================
+✅ STEP 3: CHECK ENVIRONMENT VARIABLES
+================================================================================
+
+Scroll to "Environment Variables" section:
+
+[ ] SUPABASE_URL = https://xxxxx.supabase.co
+[ ] SUPABASE_KEY = eyJhbGci... (long string)
+[ ] SUPABASE_SERVICE_KEY = eyJhbGci... (even longer string)
+
+⚠️ If ANY are missing: Add them now!
+
+Get values from:
+  → https://app.supabase.com
+  → Your project → Settings → API
+
+================================================================================
+✅ STEP 4: CHECK LOGS (Click "Logs" tab)
+================================================================================
+
+Look for these SUCCESS messages:
+
+[ ] "Build succeeded"
+[ ] "Starting service..."
+[ ] "🚀 Starting TrendLoom API..."
+[ ] "✅ Database connection established"
+[ ] "✅ TrendLoom API is ready!"
+[ ] "Uvicorn running on"
+
+Look for ERROR messages:
+
+[ ] "ModuleNotFoundError" → Add package to requirements.txt
+[ ] "Database connection failed" → Check env variables
+[ ] "Port already in use" → Fix start command
+[ ] "cannot stat 'main.py'" → Check root directory
+
+================================================================================
+✅ STEP 5: MANUAL REDEPLOY
+================================================================================
+
+After fixing any issues:
+
+1. Click "Manual Deploy" (top right)
+2. Select "Clear build cache & deploy"
+3. Click "Deploy"
+4. Wait 5 minutes
+5. Watch logs for success messages
+
+================================================================================
+✅ STEP 6: TEST
+================================================================================
+
+After deploy completes, run in PowerShell:
+
+  powershell -ExecutionPolicy Bypass -File test-backend.ps1
+
+Expected output:
+
+  ✅ SUCCESS - Status: online
+  ✅ SUCCESS - Database: connected
+  ✅ SUCCESS - Trends Found: 35
+
+================================================================================
+📊 MOST COMMON FIXES
+================================================================================
+
+Issue #1: Service Suspended
+  Fix: Click "Resume Service" button
+
+Issue #2: Missing Environment Variables
+  Fix: Add SUPABASE_URL, SUPABASE_KEY, SUPABASE_SERVICE_KEY
+
+Issue #3: Wrong Start Command
+  Fix: Change to "uvicorn main:app --host 0.0.0.0 --port $PORT"
+
+Issue #4: Wrong Root Directory
+  Fix: Set to "backend" (or empty if that doesn't work)
+
+Issue #5: Python 3.13 Issues
+  Fix: Change to Python 3.11 in Advanced settings
+
+================================================================================
+🎯 YOUR CURRENT CONFIGURATION (Fill this in)
+================================================================================
+
+Service Name: _______________
+Status: _______________
+Root Directory: _______________
+Build Command: _______________
+Start Command: _______________
+Python Version: _______________
+
+Environment Variables:
+  SUPABASE_URL: [ ] Set [ ] Missing
+  SUPABASE_KEY: [ ] Set [ ] Missing
+  SUPABASE_SERVICE_KEY: [ ] Set [ ] Missing
+
+Last Deploy:
+  Status: _______________
+  Time: _______________
+
+================================================================================
+📞 NEED HELP?
+================================================================================
+
+If backend still not working after ALL steps:
+
+1. Take screenshot of:
+   - Service status page
+   - Settings page (Root Dir, Build Cmd, Start Cmd)
+   - Last 50 lines of logs
+
+2. Share error messages from logs
+
+3. Then I can provide specific fix!
+
+================================================================================
+🚀 AFTER SUCCESSFUL DEPLOY
+================================================================================
+
+Your backend will be live at:
+  https://trendloom-3aux.onrender.com
+
+Test it:
+  https://trendloom-3aux.onrender.com/
+  https://trendloom-3aux.onrender.com/health
+  https://trendloom-3aux.onrender.com/api/trends/
+
+Then your website will show India fashion data! 🇮🇳
+
+================================================================================
