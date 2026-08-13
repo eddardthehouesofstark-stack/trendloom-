@@ -83,7 +83,7 @@ if ($backendRunning) {
     Write-Host "   👉 http://localhost:8000/docs" -ForegroundColor Gray
 } else {
     Write-Host "   ⚠️  Backend not running locally" -ForegroundColor Yellow
-    Write-Host "   Run: cd backend && python main.py" -ForegroundColor Gray
+    Write-Host "   Run: cd backend ; python main.py" -ForegroundColor Gray
 }
 Write-Host ""
 
